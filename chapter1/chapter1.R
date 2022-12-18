@@ -2,7 +2,6 @@ setwd("/Users/susheel/Documents/GitHub/statistics-for-data-scientists/data")
 
 state <- read.csv("state.csv", header = TRUE)
 
-# TOPIC: Location Estimates of Population and Murder Rates
 # TASK: compute the mean, trimmed mean, and median for the population
 mean(state$Population)
 mean(state$Population, trim = 0.1) #top 10% and bottom 10% removed, after sorting 
@@ -15,7 +14,6 @@ weighted.mean(state$Murder.Rate, w = state$Population)
 library(DescTools)
 Median(state$Murder.Rate, weights = state$Population)
 
-# TOPIC: Variability Estimates of State Population
 # TASK: compute the standard deviation, IQR and median absolute deviation for the population
 sd(state$Population)
 IQR(state$Population)
@@ -27,7 +25,6 @@ abs_median_minus_observed <- abs(median_minus_observed)
 median_absolute_deviation <- Median(abs_median_minus_observed)
 median_absolute_deviation
 
-# TOPIC: Data distribution
 # TASK: Calculate percentiles of the Murder Rate by State
 quantile(state$Murder.Rate, p = c(0.05, 0.25, 0.5, 0.75, 0.95))
 
@@ -53,7 +50,6 @@ lines(density(state$Murder.Rate), lwd = 3, col = 'blue')
 
 dfw <- read.csv("dfw_airline.csv", header = TRUE)
 
-# TOPIC: Explore Binary and Categorical Data  
 # TASK: Barplot to show airport delays per year by cause for DFW 
 barplot(as.matrix(dfw)/6, cex.axis = 0.5, las = 2, ylim = c(0, 20000))
 ?barplot
