@@ -5,7 +5,6 @@ library(ggplot2)
 
 df <- read.csv("loans_income.csv", header = TRUE)
 
-
 #samp_data <- data.frame(
 #  income = sample(df, 1000), 
 #  type = 'data_dist')
@@ -45,4 +44,14 @@ income$type = factor(income$type, levels = c('data_dist', 'mean_of_5', 'mean_of_
 ggplot(income, aes(x = income)) + geom_histogram(bins = 40) + facet_grid(type ~ .)
 #as the sample size of the sample statistic (mean) increases, it follows the central limit theorem. as the number of samples in the sample statistic increases, it follows the normal distribution -- even if the data itself does not follow the normal distribution bell curve. 
 
-income
+#TASK:  compare median of income from original loans dataset vs a bootstrapped sample
+median(df$x)
+#62000
+
+library(boot)
+median_fn <- function(x, idx) median(x[idx])
+boot_obj <- boot(df$x, R = 10000, statistic = median_fn)
+boot_obj
+#bias of -76.91895 and standard error of 222.3674
+
+#TASK:  
