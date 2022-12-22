@@ -54,4 +54,25 @@ boot_obj <- boot(df$x, R = 10000, statistic = median_fn)
 boot_obj
 #bias of -76.91895 and standard error of 222.3674
 
-#TASK:  
+#TASK:  plot QQ graph for 100 random numbers from a normal distribution
+norm_samp <- rnorm(100)
+qqnorm(norm_samp)
+abline(a = 0, b = 1, col = 'grey')
+
+#TASK: plot QQ graph for random, possibly asymmetric distribution, values
+rand_samp <- floor(runif(100, min = 0, max = 101))
+rand_samp <- diff(log(rand_samp[rand_samp > 0]))
+qqnorm(rand_samp)
+abline(a = 0, b = 1, col = 'grey')
+
+#TASK: use binomial probabilities to answer the following: if the probability of a click converting to a sale in 0.02, what is the probability of observing 0 sales in 200 clicks? 
+dbinom(x = 0, p = 0.02, size = 200)
+#probability of observing 0 sales in 200 clicks when the probability of converting a click to a sale is 0.02, is 1.7%
+
+#TASK: use binomial probabilities to answer the following: probability of observing two or fewer successes in 5 trials, where the probability of success for each trial is 0.1
+pbinom(q = 2, prob = 0.1, size = 5)
+#book is so outdated... the probability of observing 2 or fewer successes in 5 trials where the probability of success for each trial is 0.1, is 99%
+
+#TASK: poisson distribution with rate of 2
+rpois(100, lambda = 2)
+
