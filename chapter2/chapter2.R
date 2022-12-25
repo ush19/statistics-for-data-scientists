@@ -76,3 +76,8 @@ pbinom(q = 2, prob = 0.1, size = 5)
 #TASK: poisson distribution with rate of 2
 rpois(100, lambda = 2)
 
+#TASK: generate 100 random numbers from exponential distribution where mean number of events per time period is 2
+rexp(n = 100, rate = 0.2)
+15
+#TASK: generate 100 random numbers from Weibull distribution with shape of 1.5 (probability of event increases over time) and characteristic life of 5000 (time to failure)
+rweibull(n = 100, shape = 1.5, scale = 5000)
